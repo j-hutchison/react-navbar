@@ -1,0 +1,75 @@
+:root {
+	--navbar-light: rgba(172, 138, 255, 0.986453956582633);
+	--navbar-mid: rgba(126, 82, 231, 1);
+	--navbar-dark: rgba(70, 0, 238, 1);
+	--button-hover: rgba(230, 230, 230, 0.28617384453781514);
+	--button-blue-hover: #ededed;
+	--blue-green: #6dc9c9;
+	--white: #fff;
+}
+
+h1 {
+	font-weight: 400;
+}
+
+.navbar {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	padding: 2rem 8rem;
+	color: var(--white);
+
+	background: var(--navbar-dark);
+	background: linear-gradient(
+		90deg,
+		var(--navbar-light) 0%,
+		var(--navbar-mid) 25%,
+		var(--navbar-dark) 100%
+	);
+}
+.navbar-logo {
+	display: flex;
+	gap: 0.5rem;
+	align-items: center;
+}
+
+.navbar-logo-icon {
+	display: block;
+	width: 1.8rem;
+	height: 1.8rem;
+}
+
+.navbar-buttons {
+}
+.navbar-buttons-list {
+	font-size: 1.4rem;
+
+	display: flex;
+	list-style: none;
+	gap: 1rem;
+}
+.navbar-button {
+	padding: 0.5rem 1.5rem;
+	border-radius: 0.4rem;
+}
+
+.navbar-button:hover,
+.navbar-button:active {
+	background-color: var(--button-hover);
+}
+
+.navbar-button-link {
+	text-decoration: none;
+	color: var(--white);
+}
+
+.navbar-button--blue {
+	background-color: var(--blue-green);
+	margin-left: 1rem;
+}
+.navbar-button--blue:hover,
+.navbar-button--blue:hover a {
+	background-color: var(--button-blue-hover);
+	color: var(--navbar-dark);
+}
