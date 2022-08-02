@@ -1,10 +1,37 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import classes from "./Navbar.module.css";
 import logo from "../images/atom.svg";
 import menuIcon from "../images/list.svg";
 import closeIcon from "../images/x.svg";
 
 const Navbar = () => {
+	const [showMenu, setShowMenu] = useState(false);
+	const [showMenuIcon, setShowMenuIcon] = useState(true);
+	const [showCloseIcon, setShowCloseIcon] = useState(false);
+
+	const handleMenuOpenClick = () => {
+		setShowMenu(() => {
+			return true;
+		});
+		setShowMenuIcon(() => {
+			return false;
+		});
+		setShowCloseIcon(() => {
+			return true;
+		});
+	};
+	const handleMenuCloseClick = () => {
+		setShowMenu(() => {
+			return false;
+		});
+		setShowMenuIcon(() => {
+			return true;
+		});
+		setShowCloseIcon(() => {
+			return false;
+		});
+	};
+
 	return (
 		<div className={classes["navbar"]}>
 			<div className={classes["navbar-logo"]}>
@@ -15,7 +42,13 @@ const Navbar = () => {
 					alt="Atom Logo"
 				/>
 			</div>
-			<div className={classes["navbar-buttons"]}>
+			<div
+				className={
+					showMenu
+						? `${classes["navbar-buttons"]} ${classes["show"]}`
+						: `${classes["navbar-buttons"]}`
+				}
+			>
 				<ul className={classes["navbar-buttons-list"]}>
 					<li className={classes["navbar-button"]}>
 						<a href="#" className={classes["navbar-button-link"]}>
@@ -46,20 +79,24 @@ const Navbar = () => {
 					</li>
 				</ul>
 			</div>
-			{/* <div className={`${classes.hidden} ${classes["navbar-menu-icon"]}`}> */}
 			<div className={`${classes["navbar-menu-icon"]}`}>
-				<img
-					// className={`${classes["navbar-logo-icon--md"]} ${classes.hidden}`}
-					className={`${classes["navbar-logo-icon--md"]}`}
-					src={menuIcon}
-					alt="Open menu icon"
-				/>
-				<img
-					// className={`${classes["navbar-logo-icon--md"]} ${classes.hidden}`}
-					className={`${classes["navbar-logo-icon--md"]} ${classes.hidden}`}
-					src={closeIcon}
-					alt="Close menu icon"
-				/>
+				{showMenuIcon && (
+					<img
+						className={`${classes["navbar-logo-icon--md"]}`}
+						src={menuIcon}
+						alt="Open menu icon"
+						onClick={handleMenuOpenClick}
+					/>
+				)}
+
+				{showCloseIcon && (
+					<img
+						className={`${classes["navbar-logo-icon--md"]}`}
+						src={closeIcon}
+						alt="Close menu icon"
+						onClick={handleMenuCloseClick}
+					/>
+				)}
 			</div>
 		</div>
 	);
