@@ -1,6 +1,8 @@
 import React from "react";
 import classes from "./Navbar.module.css";
 import logo from "../images/atom.svg";
+import menuIcon from "../images/list.svg";
+import closeIcon from "../images/x.svg";
 
 const Navbar = () => {
 	return (
@@ -8,7 +10,7 @@ const Navbar = () => {
 			<div className={classes["navbar-logo"]}>
 				<h1>React</h1>
 				<img
-					className={classes["navbar-logo-icon"]}
+					className={classes["navbar-logo-icon--sm"]}
 					src={logo}
 					alt="Atom Logo"
 				/>
@@ -43,6 +45,21 @@ const Navbar = () => {
 						</a>
 					</li>
 				</ul>
+			</div>
+			{/* <div className={`${classes.hidden} ${classes["navbar-menu-icon"]}`}> */}
+			<div className={`${classes["navbar-menu-icon"]}`}>
+				<img
+					// className={`${classes["navbar-logo-icon--md"]} ${classes.hidden}`}
+					className={`${classes["navbar-logo-icon--md"]}`}
+					src={menuIcon}
+					alt="Open menu icon"
+				/>
+				<img
+					// className={`${classes["navbar-logo-icon--md"]} ${classes.hidden}`}
+					className={`${classes["navbar-logo-icon--md"]} ${classes.hidden}`}
+					src={closeIcon}
+					alt="Close menu icon"
+				/>
 			</div>
 		</div>
 	);

@@ -2,7 +2,12 @@
 	--navbar-light: rgba(172, 138, 255, 0.986453956582633);
 	--navbar-mid: rgba(126, 82, 231, 1);
 	--navbar-dark: rgba(70, 0, 238, 1);
-	--button-hover: rgba(230, 230, 230, 0.28617384453781514);
+
+	--navbar-light-dropdown: rgba(171, 138, 255, 0.95);
+	--navbar-mid-dropdown: rgba(126, 82, 231, 0.95);
+	--navbar-dark-dropdown: rgba(70, 0, 238, 0.95);
+
+	--button-hover: rgba(230, 230, 230, 0.2);
 	--button-blue-hover: #ededed;
 	--blue-green: #6dc9c9;
 	--white: #fff;
@@ -27,6 +32,7 @@ h1 {
 		var(--navbar-mid) 25%,
 		var(--navbar-dark) 100%
 	);
+	max-height: 7rem;
 }
 .navbar-logo {
 	display: flex;
@@ -34,16 +40,20 @@ h1 {
 	align-items: center;
 }
 
-.navbar-logo-icon {
+.navbar-logo-icon--sm {
 	display: block;
 	width: 1.8rem;
 	height: 1.8rem;
 }
 
-.navbar-buttons {
+.navbar-logo-icon--md {
+	display: block;
+	width: 2.4rem;
+	height: 2.4rem;
 }
+
 .navbar-buttons-list {
-	font-size: 1.4rem;
+	font-size: 1.3rem;
 
 	display: flex;
 	list-style: none;
@@ -57,6 +67,7 @@ h1 {
 .navbar-button:hover,
 .navbar-button:active {
 	background-color: var(--button-hover);
+	cursor: pointer;
 }
 
 .navbar-button-link {
@@ -72,4 +83,47 @@ h1 {
 .navbar-button--blue:hover a {
 	background-color: var(--button-blue-hover);
 	color: var(--navbar-dark);
+	cursor: pointer;
+}
+
+.hidden {
+	display: none;
+}
+
+@media only screen and (max-width: 50rem) {
+	.navbar {
+		position: relative;
+	}
+
+	.navbar-buttons {
+		position: absolute;
+		top: 6.5rem;
+		left: 0;
+	}
+
+	.navbar-buttons-list {
+		position: absolute;
+		width: 100vw;
+
+		font-size: 1.5rem;
+		font-weight: 400;
+
+		flex-direction: column;
+		background: var(--navbar-dark);
+		background: linear-gradient(
+			90deg,
+			var(--navbar-light-dropdown) 0%,
+			var(--navbar-mid-dropdown) 25%,
+			var(--navbar-dark-dropdown) 100%
+		);
+	}
+
+	.navbar-button {
+		padding: 2rem 1.5rem;
+		border-radius: 0.4rem;
+	}
+
+	.navbar-button--blue {
+		margin: 2rem 10rem 3rem;
+	}
 }
